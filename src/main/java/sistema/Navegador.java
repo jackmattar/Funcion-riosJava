@@ -9,7 +9,12 @@ import sistema.entidade.Cargo;
 import sistema.telas.CargosConsultar;
 import sistema.telas.CargosEditar;
 import sistema.telas.CargosInserir;
+import sistema.entidade.Funcionario;
+import sistema.telas.FuncionariosConsultar;
 import sistema.telas.FuncionariosInserir;
+import sistema.telas.FuncionariosEditar;
+import sistema.telas.RelatorioCargos;
+import sistema.telas.RelatorioSalarios;
 import sistema.telas.Inicio;
 import sistema.telas.Login;
 
@@ -54,9 +59,33 @@ public class Navegador {
     
     public static void funcionariosCadastrar(){
         Sistema.tela = new FuncionariosInserir();
-        Sistema.frame.setTitle("Funcionarios Companyy SA - Cadastrar funcionários");
+        Sistema.frame.setTitle("Funcionarios Company SA - Cadastrar funcionários");
         Navegador.atualizarTela();
     }
+    
+    public static void funcionariosConsultar(){
+        Sistema.tela = new FuncionariosConsultar();
+        Sistema.frame.setTitle("Funcionarios Company SA - Consultar funcionários");
+        Navegador.atualizarTela();
+    }
+
+     public static void funcionariosEditar(Funcionario funcionario){
+        Sistema.tela = new FuncionariosEditar(funcionario);  
+        Sistema.frame.setTitle("Funcionários Company SA - Editar funcionários");           
+        Navegador.atualizarTela();
+    }
+     
+     public static void relatorioCargos(){
+         Sistema.tela = new RelatorioCargos();
+         Sistema.frame.setTitle("Funcionarios Company SA - Relatório Cargos");
+         Navegador.atualizarTela();
+     }
+     
+     public static void relatorioSalarios(){
+         Sistema.tela = new RelatorioSalarios();
+         Sistema.frame.setTitle("Funcionarios Company SA - Relatório Salários");
+         Navegador.atualizarTela();
+     }
     
     private static void atualizarTela(){
         Sistema.frame.getContentPane().removeAll();
@@ -133,6 +162,7 @@ public class Navegador {
         miFuncionariosConsultar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
+                funcionariosConsultar();
             }
         });
         
@@ -154,12 +184,14 @@ public class Navegador {
         miRelatoriosCargos.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
+                relatorioCargos();
             }
         });
         
         miRelatoriosSalarios.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
+                relatorioSalarios();
             }
         });    
     }
